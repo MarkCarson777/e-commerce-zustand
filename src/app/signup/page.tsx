@@ -9,9 +9,10 @@ import { signUp } from "@/firebase/auth";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+import { useUserStore } from "@/stores/UserStore";
+
 import { Button } from "@/components/Button";
 import { User as FirebaseUser } from "firebase/auth";
-import { useUserContext } from "@/context/UserContext";
 
 type SignUpValues = {
   email: string;
@@ -36,7 +37,7 @@ const SignUpSchema = z
   });
 
 export default function Page() {
-  const { createUser } = useUserContext();
+  const createUser = useUserStore((state) => state.createUser);
   const router = useRouter();
 
   return (

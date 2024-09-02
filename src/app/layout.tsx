@@ -2,7 +2,6 @@
 
 import "./globals.css";
 import { AuthContextProvider } from "@/context/AuthContext";
-import { UserContextProvider } from "@/context/UserContext";
 
 export default function RootLayout({
   children,
@@ -12,9 +11,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AuthContextProvider>
-          <UserContextProvider>{children}</UserContextProvider>
-        </AuthContextProvider>
+        <AuthContextProvider>{children}</AuthContextProvider>
       </body>
     </html>
   );
