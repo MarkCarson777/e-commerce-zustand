@@ -30,6 +30,7 @@ export function Slide(props: SlideProps) {
             style={{
               objectFit: "cover",
             }}
+            sizes={hasMultipleImages ? "50vw" : "100vw"}
             priority
           />
         </div>
@@ -39,6 +40,7 @@ export function Slide(props: SlideProps) {
               src={secondImage.img}
               alt={secondImage.alt}
               fill
+              sizes={hasMultipleImages ? "50vw" : "100vw"}
               style={{
                 objectFit: "cover",
               }}
