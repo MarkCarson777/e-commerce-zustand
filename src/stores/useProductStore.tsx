@@ -16,6 +16,7 @@ import { ref, getDownloadURL } from "firebase/storage";
 import { Product } from "@/types";
 
 type ProductStore = {
+  loading: boolean;
   products: Product[];
   getProduct: (id: string) => Promise<Product>;
   getProducts: () => Promise<void>;
@@ -25,6 +26,7 @@ type ProductStore = {
 };
 
 export const useProductStore = create<ProductStore>((set) => ({
+  loading: true,
   products: [],
   getProduct: async (id: string) => {
     const docRef = doc(firestore, "products", id);
@@ -67,7 +69,7 @@ export const useProductStore = create<ProductStore>((set) => ({
 
     const productsWithImages = await Promise.all(products);
 
-    set({ products: productsWithImages });
+    set({ products: productsWithImages, loading: false });
   },
   createProduct: async (product: Product) => {
     const ref: CollectionReference<Product> = collection(
