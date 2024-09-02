@@ -15,8 +15,8 @@ import { toFormikValidationSchema } from "zod-formik-adapter";
 // Components
 import { Button } from "@/components/Button";
 import { FormInput } from "@/components/FormInput";
-// Context
-import { useProductContext } from "@/context/ProductContext";
+// Store
+import { useProductStore } from "@/stores/useProductStore";
 // Types
 import { Product } from "@/types";
 
@@ -38,7 +38,13 @@ const CreateProductSchema = z.object({
 export function ProductForm(props: ProductFormProps) {
   const { productId, className } = props;
   const [uploadedUrl, setUploadedUrl] = useState<string | null>(null);
-  const { getProduct, createProduct, updateProduct } = useProductContext();
+  const { getProduct, createProduct, updateProduct } = useProductStore(
+    (state) => ({
+      getProduct: state.getProduct,
+      createProduct: state.createProduct,
+      updateProduct: state.updateProduct,
+    })
+  );
   const router = useRouter();
 
   const onFileUpload = async (file: File, setFieldValue: Function) => {
