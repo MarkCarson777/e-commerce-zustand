@@ -1,7 +1,7 @@
 "use client";
 
 import { ComponentType, useEffect } from "react";
-import { useAuthContext } from "@/context/AuthContext";
+import { useAuthStore } from "@/stores/AuthStore";
 import { useRouter } from "next/navigation";
 
 type AuthRouteProps = {
@@ -10,7 +10,7 @@ type AuthRouteProps = {
 
 export const AuthRoute = (Page: ComponentType<AuthRouteProps>) => {
   return function AuthRouteComponent(props: AuthRouteProps) {
-    const { currentUser } = useAuthContext();
+    const currentUser = useAuthStore((state) => state.currentUser);
     const router = useRouter();
 
     useEffect(() => {

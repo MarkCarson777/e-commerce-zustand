@@ -17,7 +17,7 @@ export default function Home() {
 
   useEffect(() => {
     getProducts();
-  }, [products]);
+  }, []);
 
   useEffect(() => {
     if (heightRef.current) {

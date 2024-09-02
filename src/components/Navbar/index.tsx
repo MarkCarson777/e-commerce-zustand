@@ -7,9 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 // Third party
 import clsx from "clsx";
-// Context
-import { useAuthContext } from "@/context/AuthContext";
 // Stores
+import { useAuthStore } from "@/stores/AuthStore";
 import { useUserStore } from "@/stores/UserStore";
 // Components
 import { Icon } from "@/components/Icon";
@@ -25,7 +24,7 @@ type NavbarProps = {
 export function Navbar(props: NavbarProps) {
   const { className } = props;
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
-  const { currentUser } = useAuthContext();
+  const currentUser = useAuthStore((state) => state.currentUser);
   const getUser = useUserStore((state) => state.getUser);
 
   useEffect(() => {
