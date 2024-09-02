@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
-import { useAuthStore } from "@/stores/AuthStore";
+import { AuthProvider } from "@/provider/AuthProvider";
 
 import "./globals.css";
 
@@ -10,17 +9,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const watchAuthState = useAuthStore((state) => state.watchAuthState);
-
-  useEffect(() => {
-    const unsubscribe = watchAuthState();
-
-    return () => unsubscribe();
-  }, [watchAuthState]);
-
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }
