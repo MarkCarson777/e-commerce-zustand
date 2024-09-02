@@ -4,12 +4,20 @@ import { useState, useEffect, useRef } from "react";
 import { SlideCarousel } from "@/components/SlideCarousel";
 import { Navbar } from "@/components/Navbar";
 import { ProductCard } from "@/components/ProductCard";
-import { useProductContext } from "@/context/ProductContext";
+
+import { useProductStore } from "@/stores/useProductStore";
 
 export default function Home() {
   const [navbarHeight, setNavbarHeight] = useState<number>();
   const heightRef = useRef<HTMLDivElement>(null);
-  const { products } = useProductContext();
+  const { products, getProducts } = useProductStore((state) => ({
+    products: state.products,
+    getProducts: state.getProducts,
+  }));
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   useEffect(() => {
     if (heightRef.current) {

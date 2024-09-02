@@ -6,7 +6,7 @@ import { useRouter, usePathname } from "next/navigation";
 
 import { Button } from "@/components/Button";
 
-import { useProductContext } from "@/context/ProductContext";
+import { useProductStore } from "@/stores/useProductStore";
 
 import { Product } from "@/types";
 
@@ -17,7 +17,8 @@ type ProductCardProps = {
 
 export function ProductCard(props: ProductCardProps) {
   const { product, className } = props;
-  const { deleteProduct } = useProductContext();
+  const deleteProduct = useProductStore((state) => state.deleteProduct);
+
   const router = useRouter();
   const path = usePathname();
 
