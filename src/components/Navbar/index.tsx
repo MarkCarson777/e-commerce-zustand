@@ -106,17 +106,6 @@ export function Navbar(props: NavbarProps) {
             <Icon icon="Cart" height={24} width={24} color="#000" />
           </Link>
         </li>
-        {/* {currentUser !== null && (
-          <button
-            type="button"
-            onClick={() => {
-              signOut();
-              router.push("/");
-            }}
-          >
-            <Icon icon="Signout" size={24} color="#000" />
-          </button>
-        )} */}
       </ul>
     </nav>
   );

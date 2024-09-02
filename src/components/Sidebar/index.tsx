@@ -2,8 +2,13 @@ import clsx from "clsx";
 
 // Next
 import Link from "next/link";
+// Routing
+import { useRouter } from "next/navigation";
+// Store
+import { useAuthStore } from "@/stores/AuthStore";
 // Components
 import { Icon } from "@/components/Icon";
+import { signOut } from "@/firebase/auth";
 
 type SidebarProps = {
   className?: string;
@@ -16,6 +21,8 @@ type TabProps = {
 
 export function Sidebar(props: SidebarProps) {
   const { className } = props;
+  const currentUser = useAuthStore((state) => state.currentUser);
+  const router = useRouter();
 
   const tabs: TabProps[] = [
     { name: "STORE MANAGEMENT", path: "/dashboard" },
@@ -47,6 +54,19 @@ export function Sidebar(props: SidebarProps) {
           );
         })}
       </div>
+      {currentUser !== null && (
+        <button
+          className="p-4 border-2 border-gray-400 rounded-md hover:bg-gray-600 flex items-center gap-3"
+          type="button"
+          onClick={() => {
+            signOut();
+            router.push("/");
+          }}
+        >
+          <Icon icon="Signout" height={24} width={24} color="#FFF" />
+          <span className="uppercase">Sign out</span>
+        </button>
+      )}
     </div>
   );
 }
