@@ -1,6 +1,6 @@
 "use client";
 
-import { AuthProvider } from "@/provider/AuthProvider";
+import { AuthProvider } from "@/providers/AuthProvider";
 
 import "./globals.css";
 
