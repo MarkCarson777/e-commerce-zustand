@@ -7,7 +7,7 @@ import Link from "next/link";
 // Routing
 import { AuthRoute } from "@/containers/AuthRoute";
 // Store
-import { useProductStore } from "@/stores/useProductStore";
+import { useProductStore } from "@/stores/ProductStore";
 // Components
 import { ProductCard } from "@/components/ProductCard";
 

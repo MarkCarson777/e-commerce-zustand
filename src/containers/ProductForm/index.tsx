@@ -16,7 +16,7 @@ import { toFormikValidationSchema } from "zod-formik-adapter";
 import { Button } from "@/components/Button";
 import { FormInput } from "@/components/FormInput";
 // Store
-import { useProductStore } from "@/stores/useProductStore";
+import { useProductStore } from "@/stores/ProductStore";
 // Types
 import { Product } from "@/types";
 

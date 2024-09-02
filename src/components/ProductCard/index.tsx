@@ -6,7 +6,7 @@ import { useRouter, usePathname } from "next/navigation";
 
 import { Button } from "@/components/Button";
 
-import { useProductStore } from "@/stores/useProductStore";
+import { useProductStore } from "@/stores/ProductStore";
 
 import { Product } from "@/types";
 

@@ -5,7 +5,7 @@ import { SlideCarousel } from "@/components/SlideCarousel";
 import { Navbar } from "@/components/Navbar";
 import { ProductCard } from "@/components/ProductCard";
 
-import { useProductStore } from "@/stores/useProductStore";
+import { useProductStore } from "@/stores/ProductStore";
 
 export default function Home() {
   const [navbarHeight, setNavbarHeight] = useState<number>();
