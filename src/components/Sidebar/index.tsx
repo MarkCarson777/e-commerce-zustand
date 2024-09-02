@@ -31,7 +31,7 @@ export function Sidebar(props: SidebarProps) {
   ];
 
   return (
-    <div
+    <aside
       className={clsx(
         "flex flex-col h-screen w-3/12 bg-gray-800 text-white p-4 gap-4",
         className
@@ -40,10 +40,10 @@ export function Sidebar(props: SidebarProps) {
       <Link href="/" className="w-fit">
         <div className="flex gap-2">
           <Icon icon="Home" height={24} width={24} color="#fff" />
-          <span>E-COMMERCE</span>
+          <span>APOLA SHOWROOM</span>
         </div>
       </Link>
-      <div className="flex flex-col gap-2">
+      <nav className="flex flex-col gap-2">
         {tabs.map((tab, index) => {
           return (
             <Link key={index} href={tab.path}>
@@ -53,7 +53,7 @@ export function Sidebar(props: SidebarProps) {
             </Link>
           );
         })}
-      </div>
+      </nav>
       {currentUser !== null && (
         <button
           className="p-4 border-2 border-gray-400 rounded-md hover:bg-gray-600 flex items-center gap-3"
@@ -67,6 +67,6 @@ export function Sidebar(props: SidebarProps) {
           <span className="uppercase">Sign out</span>
         </button>
       )}
-    </div>
+    </aside>
   );
 }
