@@ -1,16 +1,25 @@
 "use client";
 
+// React
+import { useEffect } from "react";
 // Next
 import Link from "next/link";
 // Routing
 import { AuthRoute } from "@/containers/AuthRoute";
-// Context
-import { useProductContext } from "@/context/ProductContext";
+// Store
+import { useProductStore } from "@/stores/useProductStore";
 // Components
 import { ProductCard } from "@/components/ProductCard";
 
 function Page() {
-  const { products } = useProductContext();
+  const { products, getProducts } = useProductStore((state) => ({
+    products: state.products,
+    getProducts: state.getProducts,
+  }));
+
+  useEffect(() => {
+    getProducts();
+  }, [products]);
 
   return (
     <main>
