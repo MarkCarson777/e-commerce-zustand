@@ -81,14 +81,14 @@ export function Footer() {
               <Form className="w-full mt-8">
                 <div className="flex gap-4">
                   <Field
-                    className="pl-4 h-14 text-base focus:outline-none w-1/2"
+                    className="pl-4 h-14 text-base focus:outline-none w-1/2 focus:ring-4 ring-gray-200"
                     name="name"
                     type="text"
                     placeholder="Your name"
                     autoComplete="name"
                   />
                   <Field
-                    className="pl-4 h-14 text-base focus:outline-none w-1/2"
+                    className="pl-4 h-14 text-base focus:outline-none w-1/2 focus:ring-4 ring-gray-200"
                     name="email"
                     type="email"
                     placeholder="Your email"
