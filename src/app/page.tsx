@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { SlideCarousel } from "@/components/SlideCarousel";
+import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { ProductCard } from "@/components/ProductCard";
+import { SlideCarousel } from "@/components/SlideCarousel";
 
 import { useProductStore } from "@/stores/ProductStore";
 
@@ -26,7 +27,7 @@ export default function Home() {
   }, [heightRef.current]);
 
   return (
-    <main className="flex flex-col h-screen items-center">
+    <main className="flex flex-col min-h-screen items-center">
       <div className="w-full shadow-xl z-10" ref={heightRef}>
         <Navbar />
       </div>
@@ -37,6 +38,7 @@ export default function Home() {
           <ProductCard key={index} product={product} />
         ))}
       </section>
+      <Footer />
     </main>
   );
 }

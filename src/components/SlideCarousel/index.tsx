@@ -83,9 +83,12 @@ export function SlideCarousel(props: SlideCarouselProps) {
   }, []);
 
   return (
-    <div className={clsx("relative w-full", className)} style={style}>
+    <div
+      className={clsx("relative w-full overflow-x-hidden", className)}
+      style={style}
+    >
       <div
-        className="flex transition-transform duration-1000 h-full"
+        className="flex transition-transform duration-1000 h-full w-full"
         style={{
           transform: `translateX(-${currentIndex * 100}%)`,
         }}

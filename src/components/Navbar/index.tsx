@@ -52,7 +52,14 @@ export function Navbar(props: NavbarProps) {
       <ul className="flex items-center gap-8">
         <li>
           <Link href="/">
-            <Image src={apolaLogo} alt="Apola Showroom" width={72} />
+            <Image
+              src={apolaLogo}
+              alt="Apola Showroom"
+              width={0}
+              height={0}
+              sizes="72px"
+              style={{ width: "72px", height: "auto" }}
+            />
           </Link>
         </li>
         <li>

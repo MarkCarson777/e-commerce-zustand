@@ -5,7 +5,10 @@ import { ReactElement } from "react";
 import Arrow from "./icons/ornate-arrow.svg";
 import Cart from "./icons/cart.svg";
 import ChevronLeft from "./icons/chevron-left.svg";
+import Facebook from "./icons/facebook.svg";
 import Home from "./icons/home.svg";
+import Instagram from "./icons/instagram.svg";
+import Pinterest from "./icons/pinterest.svg";
 import Search from "./icons/search.svg";
 import Signout from "./icons/signout.svg";
 import User from "./icons/user.svg";
@@ -27,7 +30,10 @@ const icons: IconComponents = {
   Arrow,
   Cart,
   ChevronLeft,
+  Facebook,
+  Instagram,
   Home,
+  Pinterest,
   Search,
   Signout,
   User,

@@ -21,7 +21,7 @@ export function Button(props: ButtonProps) {
       disabled={disabled}
       className={clsx(
         "relative flex h-12 justify-center items-center uppercase px-4 text-base tracking-wider",
-        color === "primary" && "bg-[#cfb0fc]",
+        color === "primary" && "bg-[#ffdee5]",
         color === "danger" && "bg-red-500",
         className
       )}
