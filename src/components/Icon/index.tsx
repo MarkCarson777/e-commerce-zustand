@@ -8,6 +8,7 @@ import ChevronLeft from "./icons/chevron-left.svg";
 import Facebook from "./icons/facebook.svg";
 import Home from "./icons/home.svg";
 import Instagram from "./icons/instagram.svg";
+import InstagramLine from "./icons/instagram-line.svg";
 import Pinterest from "./icons/pinterest.svg";
 import Search from "./icons/search.svg";
 import Signout from "./icons/signout.svg";
@@ -32,6 +33,7 @@ const icons: IconComponents = {
   ChevronLeft,
   Facebook,
   Instagram,
+  InstagramLine,
   Home,
   Pinterest,
   Search,
