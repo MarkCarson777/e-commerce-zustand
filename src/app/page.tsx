@@ -26,7 +26,7 @@ export default function Home() {
   }, [heightRef.current]);
 
   return (
-    <main className="flex flex-col min-h-screen items-center">
+    <main className="flex flex-col h-screen items-center">
       <div className="w-full shadow-xl z-10" ref={heightRef}>
         <Navbar />
       </div>

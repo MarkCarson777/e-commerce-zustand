@@ -20,8 +20,8 @@ export function Button(props: ButtonProps) {
       onClick={onClick}
       disabled={disabled}
       className={clsx(
-        "relative flex font-semibold h-12 justify-center items-center rounded-md text-white px-4",
-        color === "primary" && "bg-blue-500",
+        "relative flex h-12 justify-center items-center uppercase px-4 text-base tracking-wider",
+        color === "primary" && "bg-[#cfb0fc]",
         color === "danger" && "bg-red-500",
         className
       )}
