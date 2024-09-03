@@ -1,7 +1,10 @@
-import Link from "next/link";
+// Forms and validation
 import { Field, Formik, Form } from "formik";
 import { z } from "zod";
 import { toFormikValidationSchema } from "zod-formik-adapter";
+// Routing
+import Link from "next/link";
+// Components
 import { Icon } from "@/components/Icon";
 
 type SubscribeValues = {
