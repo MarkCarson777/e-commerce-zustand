@@ -9,14 +9,14 @@ import clsx from "clsx";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { firebaseStorage } from "@/firebase/config";
 // Forms and validation
-import { Form, Formik, ErrorMessage } from "formik";
+import { Field, Form, Formik, ErrorMessage } from "formik";
 import { z } from "zod";
 import { toFormikValidationSchema } from "zod-formik-adapter";
+// Stores
+import { useProductStore } from "@/stores/ProductStore";
 // Components
 import { Button } from "@/components/Button";
 import { FormInput } from "@/components/FormInput";
-// Store
-import { useProductStore } from "@/stores/ProductStore";
 // Types
 import { Product } from "@/types";
 
@@ -30,6 +30,7 @@ const CreateProductSchema = z.object({
   price: z.number().min(1, "Price must be greater than 0"),
   quantity: z.number().min(1, "Quantity must be greater than 0"),
   description: z.string(),
+  category: z.string(),
   sizes: z.array(z.string()).optional(),
   currency: z.string().optional(),
   image: z.any(),
@@ -99,6 +100,7 @@ export function ProductForm(props: ProductFormProps) {
         price: 0,
         quantity: 0,
         description: "",
+        category: "",
         // sizes: [],
         // currency: "",
         image: null,
@@ -118,9 +120,9 @@ export function ProductForm(props: ProductFormProps) {
                   price: productData.price,
                   quantity: productData.quantity,
                   description: productData.description,
+                  category: productData.category,
                   image: productData.image,
                 });
-
                 if (productData.image) {
                   setUploadedUrl(productData.image);
                 }
@@ -149,6 +151,11 @@ export function ProductForm(props: ProductFormProps) {
                   label="Selling price(£)*"
                   type="number"
                 />
+                <Field as="select" name="color">
+                  <option value="red">Red</option>
+                  <option value="green">Green</option>
+                  <option value="blue">Blue</option>
+                </Field>
                 <FormInput
                   name="quantity"
                   label="Stock quantity*"

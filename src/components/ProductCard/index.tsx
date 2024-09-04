@@ -1,13 +1,14 @@
-import clsx from "clsx";
-
+// Next
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
-
-import { Button } from "@/components/Button";
-
+// Third party
+import clsx from "clsx";
+// Stores
 import { useProductStore } from "@/stores/ProductStore";
-
+// Components
+import { Button } from "@/components/Button";
+// Types
 import { Product } from "@/types";
 
 type ProductCardProps = {
@@ -23,14 +24,17 @@ export function ProductCard(props: ProductCardProps) {
   const path = usePathname();
 
   return (
-    <Link href={`/products/${product.id}`}>
+    <Link
+      className="hover:scale-105 hover:border-b-4 border-gray-200 duration-200"
+      href={`/products/${product.id}`}
+    >
       <article
         className={clsx(
           "flex flex-col rounded overflow-clip h-[600px]",
           className
         )}
       >
-        <figure className="relative h-3/4 w-full">
+        <figure className="relative h-4/5 w-full">
           <Image
             src={product.image}
             alt={product.name}
@@ -42,7 +46,7 @@ export function ProductCard(props: ProductCardProps) {
             priority
           />
         </figure>
-        <div className="flex flex-col items-center w-full p-4 gap-2">
+        <div className="flex flex-col items-center w-full p-4 gap-2 h-1/5">
           <h2 className="font-montserrat uppercase text-md hover:underline">
             {product.name}
           </h2>

@@ -1,24 +1,39 @@
 "use client";
 
+// React
 import { useState, useEffect, useRef } from "react";
+// Next
+import Image from "next/image";
+import Link from "next/link";
+// Components
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
-import { ProductCard } from "@/components/ProductCard";
 import { SlideCarousel } from "@/components/SlideCarousel";
-
-import { useProductStore } from "@/stores/ProductStore";
+// Images
+import pinkOne from "/public/images/pink-one.jpg";
+import pinkTwo from "/public/images/pink-two.jpg";
+import pinkThree from "/public/images/pink-three.jpg";
 
 export default function Home() {
   const [navbarHeight, setNavbarHeight] = useState<number>();
   const heightRef = useRef<HTMLDivElement>(null);
-  const { products, getProducts } = useProductStore((state) => ({
-    products: state.products,
-    getProducts: state.getProducts,
-  }));
-
-  useEffect(() => {
-    getProducts();
-  }, []);
+  const productSections = [
+    {
+      title: "Tops",
+      src: pinkOne,
+      href: "#",
+    },
+    {
+      title: "Bottoms",
+      src: pinkTwo,
+      href: "#",
+    },
+    {
+      title: "Accessories",
+      src: pinkThree,
+      href: "#",
+    },
+  ];
 
   useEffect(() => {
     if (heightRef.current) {
@@ -32,12 +47,29 @@ export default function Home() {
         <Navbar />
       </div>
       <SlideCarousel style={{ height: `calc(100vh - ${navbarHeight}px)` }} />
-      <h1 className="pt-16 pb-32">New Arrivals</h1>
-      <section className="relative grid grid-cols-4 gap-8 w-full px-48">
-        {products.map((product, index) => (
-          <ProductCard key={index} product={product} />
+      <div className="grid grid-cols-3 h-[600px] w-full">
+        {productSections.map(({ title, src, href }, index) => (
+          <Link key={index} className="relative h-full w-full" href={href}>
+            <Image
+              src={src}
+              alt={title}
+              style={{
+                objectFit: "cover",
+              }}
+              fill
+              priority
+            />
+            <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-black">
+              <span className="uppercase text-4xl font-montserrat font-semibold">
+                {title}
+              </span>
+              <span className="text-2xl underline font-montserrat underline-offset-2 hover:no-underline">
+                Shop now
+              </span>
+            </div>
+          </Link>
         ))}
-      </section>
+      </div>
       <Footer />
     </main>
   );
