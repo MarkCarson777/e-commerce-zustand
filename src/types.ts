@@ -10,7 +10,7 @@ export type Product = {
   quantity: number;
   description: string;
   category: string;
-  subCategory: string;
+  subcategory: string;
   // sizes: string[];
   // currency: string;
   image: any;

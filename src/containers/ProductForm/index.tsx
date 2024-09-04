@@ -30,7 +30,7 @@ const CreateProductSchema = z.object({
   name: z.string(),
   price: z.number().min(1, "Price must be greater than 0"),
   category: z.string(),
-  subCategory: z.string(),
+  subcategory: z.string(),
   quantity: z.number().min(1, "Quantity must be greater than 0"),
   description: z.string(),
   sizes: z.array(z.string()).optional(),
@@ -101,7 +101,7 @@ export function ProductForm(props: ProductFormProps) {
         name: "",
         price: 0,
         category: "",
-        subCategory: "",
+        subcategory: "",
         quantity: 0,
         description: "",
         // sizes: [],
@@ -122,7 +122,7 @@ export function ProductForm(props: ProductFormProps) {
                   name: productData.name,
                   price: productData.price,
                   category: productData.category,
-                  subCategory: productData.subCategory,
+                  subcategory: productData.subcategory,
                   quantity: productData.quantity,
                   description: productData.description,
                   image: productData.image,
@@ -176,10 +176,10 @@ export function ProductForm(props: ProductFormProps) {
                   ]}
                 />
                 <Field
-                  label="Sub-category*"
+                  label="Subcategory*"
                   component={FormSelect}
-                  name="subCategory"
-                  placeholder="Select a sub-category"
+                  name="subcategory"
+                  placeholder="Select a subcategory"
                   options={[
                     {
                       value: "subOne",
