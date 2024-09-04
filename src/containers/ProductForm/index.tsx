@@ -30,6 +30,7 @@ const CreateProductSchema = z.object({
   name: z.string(),
   price: z.number().min(1, "Price must be greater than 0"),
   category: z.string(),
+  subCategory: z.string(),
   quantity: z.number().min(1, "Quantity must be greater than 0"),
   description: z.string(),
   sizes: z.array(z.string()).optional(),
@@ -100,6 +101,7 @@ export function ProductForm(props: ProductFormProps) {
         name: "",
         price: 0,
         category: "",
+        subCategory: "",
         quantity: 0,
         description: "",
         // sizes: [],
@@ -120,6 +122,7 @@ export function ProductForm(props: ProductFormProps) {
                   name: productData.name,
                   price: productData.price,
                   category: productData.category,
+                  subCategory: productData.subCategory,
                   quantity: productData.quantity,
                   description: productData.description,
                   image: productData.image,
@@ -159,16 +162,36 @@ export function ProductForm(props: ProductFormProps) {
                   placeholder="Select a category"
                   options={[
                     {
-                      value: "tops",
-                      label: "Tops",
+                      value: "categoryOne",
+                      label: "Category One",
                     },
                     {
-                      value: "pants",
-                      label: "Pants",
+                      value: "categoryTwo",
+                      label: "Category Two",
                     },
                     {
-                      value: "accessories",
-                      label: "Accessories",
+                      value: "categoryThree",
+                      label: "Category Three",
+                    },
+                  ]}
+                />
+                <Field
+                  label="Sub-category*"
+                  component={FormSelect}
+                  name="subCategory"
+                  placeholder="Select a sub-category"
+                  options={[
+                    {
+                      value: "subOne",
+                      label: "Sub One",
+                    },
+                    {
+                      value: "subTwo",
+                      label: "Sub Two",
+                    },
+                    {
+                      value: "subThree",
+                      label: "Sub Three",
                     },
                   ]}
                 />
