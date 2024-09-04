@@ -17,6 +17,7 @@ import { useProductStore } from "@/stores/ProductStore";
 // Components
 import { Button } from "@/components/Button";
 import { FormInput } from "@/components/FormInput";
+import { FormSelect } from "@/components/FormSelect";
 // Types
 import { Product } from "@/types";
 
@@ -28,9 +29,9 @@ type ProductFormProps = {
 const CreateProductSchema = z.object({
   name: z.string(),
   price: z.number().min(1, "Price must be greater than 0"),
+  category: z.string(),
   quantity: z.number().min(1, "Quantity must be greater than 0"),
   description: z.string(),
-  category: z.string(),
   sizes: z.array(z.string()).optional(),
   currency: z.string().optional(),
   image: z.any(),
@@ -98,9 +99,9 @@ export function ProductForm(props: ProductFormProps) {
       initialValues={{
         name: "",
         price: 0,
+        category: "",
         quantity: 0,
         description: "",
-        category: "",
         // sizes: [],
         // currency: "",
         image: null,
@@ -118,9 +119,9 @@ export function ProductForm(props: ProductFormProps) {
                 setValues({
                   name: productData.name,
                   price: productData.price,
+                  category: productData.category,
                   quantity: productData.quantity,
                   description: productData.description,
-                  category: productData.category,
                   image: productData.image,
                 });
                 if (productData.image) {
@@ -151,11 +152,26 @@ export function ProductForm(props: ProductFormProps) {
                   label="Selling price(£)*"
                   type="number"
                 />
-                <Field as="select" name="color">
-                  <option value="red">Red</option>
-                  <option value="green">Green</option>
-                  <option value="blue">Blue</option>
-                </Field>
+                <Field
+                  label="Category*"
+                  component={FormSelect}
+                  name="category"
+                  placeholder="Select a category"
+                  options={[
+                    {
+                      value: "tops",
+                      label: "Tops",
+                    },
+                    {
+                      value: "pants",
+                      label: "Pants",
+                    },
+                    {
+                      value: "accessories",
+                      label: "Accessories",
+                    },
+                  ]}
+                />
                 <FormInput
                   name="quantity"
                   label="Stock quantity*"
