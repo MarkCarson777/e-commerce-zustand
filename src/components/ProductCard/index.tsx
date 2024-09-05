@@ -34,7 +34,7 @@ export function ProductCard(props: ProductCardProps) {
           className
         )}
       >
-        <figure className="relative h-4/5 w-full">
+        <figure className="relative flex flex-1 w-full">
           <Image
             src={product.image}
             alt={product.name}
@@ -46,12 +46,12 @@ export function ProductCard(props: ProductCardProps) {
             priority
           />
         </figure>
-        <div className="flex flex-col items-center w-full p-4 gap-2 h-1/5">
+        <div className="flex flex-col items-center w-full p-4 gap-2 h-fit">
           <h2 className="font-montserrat uppercase text-md hover:underline">
             {product.name}
           </h2>
           <p className="font-montserrat text-xl font-semibold tracking-wider">
-            £{product.price}.00
+            £{product.price}
           </p>
           {path === "/dashboard" && (
             <div className="flex gap-2 justify-end">

@@ -23,18 +23,18 @@ function Page() {
   }, []);
 
   return (
-    <main className="flex flex-col flex-1">
-      <div className="bg-gray-200 w-full flex justify-between items-center pr-2 pl-4 py-2 min-h-16">
+    <main className="h-screen flex flex-col">
+      <div className=" bg-gray-200 w-full flex justify-between items-center pr-2 pl-4 py-2 min-h-16">
         <h1 className="text-2xl">All Products</h1>
-        <div className="relative flex font-semibold h-12 justify-center items-center rounded-md text-white bg-blue-500 w-fit px-4">
+        <div className="relative flex font-semibold h-12 items-center rounded-md text-white bg-blue-500 px-4">
           <Link href="/dashboard/create">Add product</Link>
         </div>
       </div>
-      <div className="flex-1 flex flex-col items-center justify-center">
+      <div className="flex-1 overflow-y-auto">
         {loading ? (
           <section>Loading...</section>
         ) : (
-          <section className="flex-1 grid grid-cols-4 gap-3 p-2 w-full">
+          <section className="grid grid-cols-5 gap-3 p-2 w-full">
             {products.map((product, index) => (
               <ProductCard key={index} product={product} />
             ))}

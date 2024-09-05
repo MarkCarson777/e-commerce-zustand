@@ -8,9 +8,9 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex">
-      <Sidebar />
-      <main className="flex w-full">{children}</main>
+    <div className="flex h-screen">
+      <Sidebar className="sticky top-0 h-screen" />
+      <main className="w-full">{children}</main>
     </div>
   );
 }
