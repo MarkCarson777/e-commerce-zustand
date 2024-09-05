@@ -1,7 +1,5 @@
 "use client";
 
-// React
-import { useState, useEffect, useRef } from "react";
 // Next
 import Image from "next/image";
 import Link from "next/link";
@@ -15,8 +13,6 @@ import pinkTwo from "/public/images/pink-two.jpg";
 import pinkThree from "/public/images/pink-three.jpg";
 
 export default function Home() {
-  const [navbarHeight, setNavbarHeight] = useState<number>();
-  const heightRef = useRef<HTMLDivElement>(null);
   const productSections = [
     {
       title: "Tops",
@@ -35,18 +31,14 @@ export default function Home() {
     },
   ];
 
-  useEffect(() => {
-    if (heightRef.current) {
-      setNavbarHeight(heightRef.current.clientHeight);
-    }
-  }, [heightRef.current]);
-
   return (
     <main className="flex flex-col min-h-screen items-center">
-      <div className="w-full shadow-xl z-10" ref={heightRef}>
-        <Navbar />
+      <div className="h-screen flex flex-col w-full">
+        <div className="w-full shadow-xl z-10">
+          <Navbar />
+        </div>
+        <SlideCarousel className="flex-1" />
       </div>
-      <SlideCarousel style={{ height: `calc(100vh - ${navbarHeight}px)` }} />
       <div className="grid grid-cols-3 h-[600px] w-full">
         {productSections.map(({ title, src, href }, index) => (
           <Link key={index} className="relative h-full w-full" href={href}>
