@@ -6,6 +6,8 @@ import {
   getDoc,
   getDocs,
   updateDoc,
+  where,
+  query,
   CollectionReference,
   QueryDocumentSnapshot,
   WithFieldValue,
@@ -20,6 +22,7 @@ type ProductStore = {
   products: Product[];
   getProduct: (id: string) => Promise<Product>;
   getProducts: () => Promise<void>;
+  getProductsByCategory: (category: string) => Promise<void>;
   createProduct: (product: Product) => Promise<void>;
   updateProduct: (id: string, product: Product) => Promise<void>;
   deleteProduct: (id: string) => Promise<void>;
@@ -48,6 +51,36 @@ export const useProductStore = create<ProductStore>((set) => ({
   },
   getProducts: async () => {
     const querySnapshot = await getDocs(collection(firestore, "products"));
+
+    const products = querySnapshot.docs
+      .filter((doc) => {
+        const data = doc.data();
+        return !data.deleted;
+      })
+      .map(async (doc) => {
+        const id = doc.id;
+        const data = doc.data() as Product;
+
+        if (typeof data.image !== "string") {
+          throw new Error("Invalid type for image");
+        }
+
+        const imageUrl = await getDownloadURL(ref(firebaseStorage, data.image));
+
+        return { ...data, id, imageUrl };
+      });
+
+    const productsWithImages = await Promise.all(products);
+
+    set({ products: productsWithImages, loading: false });
+  },
+  getProductsByCategory: async (category: string) => {
+    const q = query(
+      collection(firestore, "products"),
+      where("category", "==", category)
+    );
+
+    const querySnapshot = await getDocs(q);
 
     const products = querySnapshot.docs
       .filter((doc) => {
