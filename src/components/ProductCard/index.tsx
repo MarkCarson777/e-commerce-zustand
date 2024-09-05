@@ -25,7 +25,7 @@ export function ProductCard(props: ProductCardProps) {
 
   return (
     <Link
-      className="hover:scale-105 hover:border-b-4 border-gray-200 duration-200"
+      className="group border-gray-200 duration-200"
       href={`/products/${product.id}`}
     >
       <article
@@ -34,8 +34,9 @@ export function ProductCard(props: ProductCardProps) {
           className
         )}
       >
-        <figure className="relative flex flex-1 w-full">
+        <figure className="relative flex flex-1 w-full overflow-clip">
           <Image
+            className="hover:scale-110 duration-300"
             src={product.image}
             alt={product.name}
             fill
@@ -47,10 +48,10 @@ export function ProductCard(props: ProductCardProps) {
           />
         </figure>
         <div className="flex flex-col items-center w-full p-4 gap-2 h-fit">
-          <h2 className="font-montserrat uppercase text-md hover:underline">
+          <h2 className="font-montserrat uppercase text-md group-hover:underline">
             {product.name}
           </h2>
-          <p className="font-montserrat text-xl font-semibold tracking-wider">
+          <p className="font-montserrat text-xl font-semibold tracking-wider no-underline">
             £{product.price}
           </p>
           {path === "/dashboard" && (

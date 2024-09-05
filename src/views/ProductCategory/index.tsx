@@ -37,7 +37,7 @@ export function ProductCategory(props: ProductCategoryProps) {
           ) : (
             <>
               <ProductsHeader label={category} />
-              <section className="grid grid-cols-5 gap-3 p-2 w-full">
+              <section className="grid grid-cols-5 gap-4 p-4 w-full">
                 {products.map((product, index) => (
                   <ProductCard key={index} product={product} />
                 ))}

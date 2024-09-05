@@ -5,7 +5,9 @@ import { ReactElement } from "react";
 import Arrow from "./icons/ornate-arrow.svg";
 import Cart from "./icons/cart.svg";
 import ChevronLeft from "./icons/chevron-left.svg";
+import ChevronDown from "./icons/chevron-down.svg";
 import Facebook from "./icons/facebook.svg";
+import Filter from "./icons/filter.svg";
 import Home from "./icons/home.svg";
 import Instagram from "./icons/instagram.svg";
 import InstagramLine from "./icons/instagram-line.svg";
@@ -31,7 +33,9 @@ const icons: IconComponents = {
   Arrow,
   Cart,
   ChevronLeft,
+  ChevronDown,
   Facebook,
+  Filter,
   Instagram,
   InstagramLine,
   Home,
