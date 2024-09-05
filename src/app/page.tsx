@@ -21,17 +21,17 @@ export default function Home() {
     {
       title: "Tops",
       src: pinkOne,
-      href: "#",
+      href: "/product-category/tops",
     },
     {
-      title: "Bottoms",
+      title: "Pants",
       src: pinkTwo,
-      href: "#",
+      href: "/product-category/pants",
     },
     {
       title: "Accessories",
       src: pinkThree,
-      href: "#",
+      href: "/product-category/accessories",
     },
   ];
 
