@@ -4,5 +4,5 @@ type ProductsHeaderProps = {
 
 export function ProductsHeader(props: ProductsHeaderProps) {
   const { label } = props;
-  return <div>{label}</div>;
+  return <span className="capitalize">{label}</span>;
 }
