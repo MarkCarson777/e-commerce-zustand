@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useProductStore } from "@/stores/ProductStore";
 // Components
 import { Footer } from "@/components/Footer";
+import { Loader } from "@/components/Loader";
 import { Navbar } from "@/components/Navbar";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductsHeader } from "@/components/ProductsHeader";
@@ -25,21 +26,27 @@ export function ProductCategory(props: ProductCategoryProps) {
   }, []);
 
   return (
-    <main className="flex flex-col min-h-screen items-center">
-      <Navbar />
-      <ProductsHeader label={category} />
-      <div className="flex-1 overflow-y-auto">
-        {loading ? (
-          <section>Loading...</section>
-        ) : (
-          <section className="grid grid-cols-5 gap-3 p-2 w-full">
-            {products.map((product, index) => (
-              <ProductCard key={index} product={product} />
-            ))}
-          </section>
-        )}
+    <main className="flex flex-col items-center">
+      <div className="flex flex-col h-screen w-full">
+        <Navbar />
+        <div className="flex-1 overflow-y-auto">
+          {loading ? (
+            <section className="h-full flex items-center justify-center">
+              <Loader size="100px" />
+            </section>
+          ) : (
+            <>
+              <ProductsHeader label={category} />
+              <section className="grid grid-cols-5 gap-3 p-2 w-full">
+                {products.map((product, index) => (
+                  <ProductCard key={index} product={product} />
+                ))}
+              </section>
+              <Footer />
+            </>
+          )}
+        </div>
       </div>
-      <Footer />
     </main>
   );
 }

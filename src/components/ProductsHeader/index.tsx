@@ -4,5 +4,9 @@ type ProductsHeaderProps = {
 
 export function ProductsHeader(props: ProductsHeaderProps) {
   const { label } = props;
-  return <span className="capitalize">{label}</span>;
+  return (
+    <div className="flex justify-center items-center h-28 bg-gray-100">
+      <span className="capitalize font-tangerine text-6xl">{label}</span>
+    </div>
+  );
 }
