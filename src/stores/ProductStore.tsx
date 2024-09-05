@@ -50,6 +50,8 @@ export const useProductStore = create<ProductStore>((set) => ({
     }
   },
   getProducts: async () => {
+    set({ products: [], loading: true });
+
     const querySnapshot = await getDocs(collection(firestore, "products"));
 
     const products = querySnapshot.docs
@@ -75,6 +77,8 @@ export const useProductStore = create<ProductStore>((set) => ({
     set({ products: productsWithImages, loading: false });
   },
   getProductsByCategory: async (category: string) => {
+    set({ products: [], loading: true });
+
     const q = query(
       collection(firestore, "products"),
       where("category", "==", category)
