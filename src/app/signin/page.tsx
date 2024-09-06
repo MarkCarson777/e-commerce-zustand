@@ -44,7 +44,7 @@ export default function Page() {
   return (
     <>
       <div className="flex flex-col h-screen">
-        <Navbar />
+        <Navbar shadow={false} />
         <div className="flex flex-col h-screen w-full items-center justify-between">
           <div></div>
           <Formik<SignInValues>

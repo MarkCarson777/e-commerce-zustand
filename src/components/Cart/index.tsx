@@ -15,12 +15,12 @@ export function Cart(props: CartProps) {
   return (
     <Transition show={isOpen}>
       <TransitionChild>
-        <div className="flex justify-end fixed top-0 right-0 h-screen w-full bg-[#ffdee5] bg-opacity-50 transition duration-500 data-[closed]:opacity-0"></div>
+        <div className="flex justify-end fixed top-0 right-0 h-screen w-full bg-[#ffdee5] bg-opacity-50 transition duration-500 data-[closed]:opacity-0 z-20"></div>
       </TransitionChild>
       <TransitionChild>
         <div
           className={clsx(
-            "absolute top-0 right-0 h-screen flex flex-col bg-white w-1/4 px-8 py-10 shadow-xl transition ease-in-out",
+            "absolute top-0 right-0 h-screen flex flex-col bg-white w-1/4 px-8 py-10 shadow-xl transition ease-in-out z-30",
             // Entering styles
             "data-[enter]:duration-500 data-[enter]:data-[closed]:translate-x-full",
             // Leaving styles

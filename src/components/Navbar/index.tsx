@@ -13,19 +13,22 @@ import { useUserStore } from "@/stores/UserStore";
 // Components
 import { Cart } from "@/components/Cart";
 import { Icon } from "@/components/Icon";
+import { Search } from "@/components/Search";
 // Images
 import apolaLogo from "/public/images/apola.png";
 // Types
 import { User } from "@/types";
 
 type NavbarProps = {
+  shadow: boolean;
   className?: string;
 };
 
 export function Navbar(props: NavbarProps) {
-  const { className } = props;
+  const { shadow, className } = props;
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const [cartOpen, setCartOpen] = useState<boolean>(false);
+  const [searchOpen, setSearchOpen] = useState<boolean>(false);
   const currentUser = useAuthStore((state) => state.currentUser);
   const getUser = useUserStore((state) => state.getUser);
 
@@ -45,10 +48,11 @@ export function Navbar(props: NavbarProps) {
   }, [currentUser]);
 
   return (
-    <div className="fixed w-full">
+    <div className="fixed w-full z-20">
       <nav
         className={clsx(
-          "grid grid-cols-3 bg-[#fff] pl-4 py-4 pr-8 w-full text-black",
+          "sticky top-0 grid grid-cols-3 bg-[#fff] pl-4 py-4 pr-8 w-full text-black z-20",
+          shadow && "shadow-xl",
           className
         )}
       >
@@ -94,9 +98,9 @@ export function Navbar(props: NavbarProps) {
         </Link>
         <ul className="flex gap-8 justify-end items-center">
           <li>
-            <Link href="#">
+            <button onClick={() => setSearchOpen(!searchOpen)}>
               <Icon icon="Search" height={24} width={24} color="#000" />
-            </Link>
+            </button>
           </li>
           <li>
             <Link
@@ -118,6 +122,7 @@ export function Navbar(props: NavbarProps) {
           </li>
         </ul>
       </nav>
+      <Search isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
       <Cart isOpen={cartOpen} onClose={() => setCartOpen(false)} />
     </div>
   );

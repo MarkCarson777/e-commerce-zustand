@@ -34,9 +34,7 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen items-center">
       <div className="h-screen flex flex-col w-full">
-        <div className="w-full shadow-xl z-10">
-          <Navbar />
-        </div>
+        <Navbar shadow={true} />
         <SlideCarousel className="flex-1" />
       </div>
       <div className="grid grid-cols-3 h-[600px] w-full">
