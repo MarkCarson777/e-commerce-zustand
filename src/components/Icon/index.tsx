@@ -6,6 +6,7 @@ import Arrow from "./icons/ornate-arrow.svg";
 import Cart from "./icons/cart.svg";
 import ChevronLeft from "./icons/chevron-left.svg";
 import ChevronDown from "./icons/chevron-down.svg";
+import Close from "./icons/close.svg";
 import Facebook from "./icons/facebook.svg";
 import Filter from "./icons/filter.svg";
 import Home from "./icons/home.svg";
@@ -34,6 +35,7 @@ const icons: IconComponents = {
   Cart,
   ChevronLeft,
   ChevronDown,
+  Close,
   Facebook,
   Filter,
   Instagram,

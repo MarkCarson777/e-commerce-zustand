@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "^9.0.0",
+    "@headlessui/react": "^2.1.5",
     "clsx": "^2.1.1",
     "firebase": "^10.12.5",
     "firebase-admin": "^12.4.0",
