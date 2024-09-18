@@ -1,4 +1,4 @@
-export default function Products() {
+export default function Page() {
   return (
     <main className="flex flex-col min-h-screen items-center">
       <h1>Products</h1>

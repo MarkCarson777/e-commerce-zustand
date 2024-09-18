@@ -5,29 +5,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 // Firebase
-import { signIn } from "@/firebase/auth";
+import { resetPassword } from "@/firebase/auth";
 // Forms and validation
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import { z } from "zod";
 import { toFormikValidationSchema } from "zod-formik-adapter";
 // Components
 import { Button } from "@/components/Button";
-import { Footer } from "@/components/Footer";
 import { Icon } from "@/components/Icon";
+import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 // Images
 import instagram from "/public/images/instagram.jpg";
 
-type SignInValues = {
+type ResetPasswordValues = {
   email: string;
-  password: string;
 };
 
-const SignInSchema = z.object({
+const ResetPasswordSchema = z.object({
   email: z
     .string({ required_error: "Your email is required" })
     .email({ message: "This email address is not valid" }),
-  password: z.string({ required_error: "Your password is required" }),
 });
 
 export default function Page() {
@@ -47,26 +45,25 @@ export default function Page() {
         <Navbar shadow={false} />
         <div className="flex flex-col h-screen w-full items-center justify-between">
           <div></div>
-          <Formik<SignInValues>
-            initialValues={{ email: "", password: "" }}
-            validationSchema={toFormikValidationSchema(SignInSchema)}
-            onSubmit={async (values: SignInValues) => {
-              const { result, error } = await signIn(
-                values.email,
-                values.password
-              );
+          <Formik<ResetPasswordValues>
+            initialValues={{ email: "" }}
+            validationSchema={toFormikValidationSchema(ResetPasswordSchema)}
+            onSubmit={async (values: ResetPasswordValues) => {
+              const { result, error } = await resetPassword(values.email);
 
               if (error) {
-                return console.log("Error signing in", error);
+                return console.log("Error sending recovery email", error);
               }
 
-              console.log("Successfully signed in", result);
-              return router.push("/");
+              console.log("Successfully sent recovery email", result);
+              return router.push("/signin");
             }}
           >
             {({ isSubmitting }) => (
               <div className="flex flex-col gap-4 w-full items-center">
-                <span className="font-montserrat text-2xl mb-6">Login</span>
+                <span className="font-montserrat text-2xl mb-6">
+                  Reset your password
+                </span>
                 <Form className="flex flex-col w-1/5">
                   <Field
                     className="pl-4 h-14 border-b-4 text-base focus:outline-none"
@@ -80,27 +77,6 @@ export default function Page() {
                     name="email"
                     component="div"
                   />
-                  <Field
-                    className="mt-2 pl-4 h-14 border-b-4 text-base focus:outline-none"
-                    name="password"
-                    type="password"
-                    placeholder="Password..."
-                    autoComplete="current-password"
-                  />
-                  <ErrorMessage
-                    className="mt-2 text-base font-sans text-[#f76d73]"
-                    name="password"
-                    component="div"
-                  />
-                  <div className="flex gap-1 text-xs justify-center pt-2">
-                    <span>Forgot your password?</span>
-                    <Link
-                      className="underline hover:no-underline"
-                      href="/reset-password"
-                    >
-                      We can help
-                    </Link>
-                  </div>
                   <Button
                     className="mt-12 hover:scale-105 duration-300"
                     type="submit"
@@ -108,15 +84,9 @@ export default function Page() {
                     disabled={isSubmitting}
                     pending={isSubmitting}
                   >
-                    <span>Sign in</span>
+                    <span>Reset password</span>
                   </Button>
                 </Form>
-                <div className="flex gap-1 text-base">
-                  <span>Don't have an account?</span>
-                  <Link className="underline hover:no-underline" href="/signup">
-                    Join us
-                  </Link>
-                </div>
               </div>
             )}
           </Formik>
