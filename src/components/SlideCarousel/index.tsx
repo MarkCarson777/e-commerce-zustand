@@ -99,7 +99,7 @@ export function SlideCarousel(props: SlideCarouselProps) {
       </div>
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2"
+        className="hidden lg:block absolute top-1/2 left-4 transform -translate-y-1/2"
       >
         <Icon
           icon="Arrow"
@@ -110,7 +110,7 @@ export function SlideCarousel(props: SlideCarouselProps) {
       </button>
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 rotate-180"
+        className="hidden lg:block absolute top-1/2 right-4 transform -translate-y-1/2 rotate-180"
       >
         <Icon
           icon="Arrow"

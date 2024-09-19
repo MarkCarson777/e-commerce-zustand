@@ -24,12 +24,10 @@ export function Slide(props: SlideProps) {
           })}
         >
           <Image
+            className="object-cover"
             src={firstImage.img}
             alt={firstImage.alt}
             fill
-            style={{
-              objectFit: "cover",
-            }}
             sizes={hasMultipleImages ? "50vw" : "100vw"}
             priority
           />
@@ -55,7 +53,7 @@ export function Slide(props: SlideProps) {
           slide.lightMode ? "text-black" : "text-white"
         )}
       >
-        <span className="text-8xl font-tangerine font-semibold">
+        <span className="text-center text-8xl font-tangerine font-semibold">
           {slide.title}
         </span>
         <Link href="/products">
