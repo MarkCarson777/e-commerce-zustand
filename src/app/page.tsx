@@ -35,10 +35,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
-      <div className="h-screen flex flex-col w-full">
-        <Navigation />
-        <SlideCarousel className="flex-1" />
-      </div>
+      <Navigation />
+      <SlideCarousel className="h-nav lg:h-navLarge" />
       <div className="grid grid-cols-1 lg:grid-cols-3  w-full">
         {productSections.map(({ title, src, href }, index) => (
           <Link key={index} className="relative aspect-square" href={href}>

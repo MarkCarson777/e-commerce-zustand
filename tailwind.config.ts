@@ -9,6 +9,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      height: {
+        nav: "calc(100vh - 64px)",
+        navLarge: "calc(100vh - 96px)",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
