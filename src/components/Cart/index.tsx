@@ -20,14 +20,14 @@ export function Cart(props: CartProps) {
       <TransitionChild>
         <div
           className={clsx(
-            "absolute top-0 right-0 h-screen flex flex-col bg-white w-1/4 px-8 py-10 shadow-xl transition ease-in-out z-30",
+            "absolute top-0 right-0 h-screen flex flex-col bg-white w-10/12 lg:w-1/4 px-8 shadow-xl transition ease-in-out z-30",
             // Entering styles
             "data-[enter]:duration-500 data-[enter]:data-[closed]:translate-x-full",
             // Leaving styles
             "data-[leave]:duration-500 data-[leave]:data-[closed]:translate-x-full"
           )}
         >
-          <div className="flex w-full justify-between items-center tracking-[6px] font-medium border-b-4 pb-10">
+          <div className="flex w-full justify-between items-center tracking-[6px] font-medium border-b-4 h-16 lg:h-24">
             <div className="w-6"></div>
             <h2 className="font-montserrat text-2xl uppercase">Cart</h2>
             <button onClick={onClose}>
