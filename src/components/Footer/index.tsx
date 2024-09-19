@@ -20,7 +20,7 @@ const SubscribeSchema = z.object({
 export function Footer() {
   return (
     <footer className="bg-[#ffdee5] pb-8 w-full px-4">
-      <div className="grid grid-cols-3 py-28">
+      <div className="grid grid-cols-1 lg:grid-cols-3 space-y-28 lg:space-y-0 py-28 px-12 lg:px-0">
         <section className="flex flex-col items-center">
           <h2 className="uppercase text-lg font-semibold">Care & details</h2>
           <nav className="flex flex-col gap-2 mt-4 items-center">
@@ -79,16 +79,16 @@ export function Footer() {
           >
             {({ isSubmitting }) => (
               <Form className="w-full mt-8">
-                <div className="flex gap-4">
+                <div className="flex flex-col lg:flex-row gap-4">
                   <Field
-                    className="pl-4 h-14 text-base focus:outline-none w-1/2 focus:ring-4 ring-gray-200"
+                    className="pl-4 h-14 text-base focus:outline-none w-full lg:w-1/2 focus:ring-4 ring-gray-200"
                     name="name"
                     type="text"
                     placeholder="Your name"
                     autoComplete="name"
                   />
                   <Field
-                    className="pl-4 h-14 text-base focus:outline-none w-1/2 focus:ring-4 ring-gray-200"
+                    className="pl-4 h-14 text-base focus:outline-none w-full lg:w-1/2 focus:ring-4 ring-gray-200"
                     name="email"
                     type="email"
                     placeholder="Your email"
