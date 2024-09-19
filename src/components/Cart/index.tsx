@@ -29,7 +29,9 @@ export function Cart(props: CartProps) {
         >
           <div className="flex w-full justify-between items-center tracking-[6px] font-medium border-b-4 h-16 lg:h-24">
             <div className="w-6"></div>
-            <h2 className="font-montserrat text-2xl uppercase">Cart</h2>
+            <h2 className="font-montserrat text-xl lg:text-2xl uppercase">
+              Cart
+            </h2>
             <button onClick={onClose}>
               <Icon icon="Close" height={24} width={24} />
             </button>
