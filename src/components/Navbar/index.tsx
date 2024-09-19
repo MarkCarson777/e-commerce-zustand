@@ -48,7 +48,7 @@ export function Navbar(props: NavbarProps) {
   }, [currentUser]);
 
   return (
-    <div className="fixed w-full z-20">
+    <div className="w-full z-20">
       <nav
         className={clsx(
           "sticky top-0 grid grid-cols-3 bg-[#fff] pl-4 py-4 pr-8 w-full text-black z-20",
