@@ -53,36 +53,44 @@ export function Navigation(props: NavigationProps) {
     >
       <div className="space-x-8 flex items-center">
         {/* Mobile & Desktop */}
-        <Link href="/">
-          <div className="relative w-[40px] h-12 lg:w-14 lg:h-16">
+        <Link href="/" aria-label="Home">
+          <nav className="relative w-[40px] h-12 lg:w-14 lg:h-16">
             <Image
               src={logo}
               alt="Apola Showroom"
               fill
-              sizes="(max-width: 640px) 36px, 64px"
+              sizes="(max-width: 1024px) 40px, 56px"
             />
-          </div>
+          </nav>
         </Link>
         {/* Desktop */}
         <div className="hidden lg:flex space-x-8 text-center hover:underline items-center">
-          <Link href="#">Shop</Link>
-          <Link href="#">Sizing and fit</Link>
-          <Link href="#">Customer care</Link>
+          <Link href="#" aria-label="Shop">
+            Shop
+          </Link>
+          <Link href="#" aria-label="Sizing and fit">
+            Sizing and fit
+          </Link>
+          <Link href="#" aria-label="Customer care">
+            Customer care
+          </Link>
         </div>
       </div>
       {/* Mobile & Desktop */}
       <Link
         href="/"
+        aria-label="Apola Showroom Home"
         className="hidden lg:block lg:text-center text-2xl tracking-[8px] font-medium mr-[-8px]"
       >
-        Apola Showroom
+        <h1>Apola Showroom</h1>
       </Link>
       {/* Mobile & Desktop */}
       <div className="flex justify-end space-x-4 lg:space-x-8">
-        <button onClick={() => setSearchOpen(!searchOpen)}>
+        <button onClick={() => setSearchOpen(!searchOpen)} aria-label="Search">
           <Icon icon="Search" height={24} width={24} color="#000" />
         </button>
         <Link
+          aria-label="User account"
           href={
             currentUser === null
               ? "/signin"
@@ -93,7 +101,7 @@ export function Navigation(props: NavigationProps) {
         >
           <Icon icon="User" height={24} width={24} color="#000" />
         </Link>
-        <button onClick={() => setCartOpen(true)}>
+        <button onClick={() => setCartOpen(true)} aria-label="Cart">
           <Icon icon="Cart" height={24} width={24} color="#000" />
         </button>
       </div>
